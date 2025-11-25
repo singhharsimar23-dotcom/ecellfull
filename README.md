@@ -2,6 +2,8 @@
 
 A complete, production-ready member portal for Entrepreneurship Cell with beautiful glassmorphism design, JWT authentication, and full-stack implementation.
 
+🚀 Live Demo: Access the Portal Here: https://ecell-portal-sigma.vercel.app/
+
 ## 🚀 Features
 
 - **Modern UI**: Glassmorphism design with deep violet/purple primary colors and teal accents
