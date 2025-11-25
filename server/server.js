@@ -10,7 +10,7 @@ const app = express();
 // and localhost for development, ensuring security.
 const allowedOrigins = [
     'http://localhost:5173', 
-    'https://ecell-portal-sigma.vercel.app' // YOUR LIVE VERCEL FRONTEND URL
+    'https://ecell-portal-bl2g7v6c1-sams-projects-405f3e41.vercel.app' // YOUR LIVE VERCEL FRONTEND URL
 ];
 
 app.use(cors({
