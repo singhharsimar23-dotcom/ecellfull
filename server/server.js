@@ -21,7 +21,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Connect to MongoDB
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ecell-portal';
+const MONGODB_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecell-portal';
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
