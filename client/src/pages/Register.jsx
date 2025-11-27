@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { registerUser } from '../services/dataService';
+import { sendOTP } from '../services/dataService';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -38,6 +38,11 @@ const Register = () => {
       setError('Please enter a valid email address');
       return false;
     }
+    // Validate @vitbhopal.ac.in email
+    if (!formData.email.toLowerCase().endsWith('@vitbhopal.ac.in')) {
+      setError('Only @vitbhopal.ac.in email addresses are allowed');
+      return false;
+    }
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters long');
       return false;
@@ -59,17 +64,19 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await registerUser(
-        formData.name,
-        formData.email,
-        formData.password,
-        formData.rollNumber
-      );
+      // Send OTP instead of direct registration
+      const response = await sendOTP(formData);
       if (response.success) {
-        navigate('/login', { state: { message: 'Registration successful! Please login.' } });
+        // Navigate to OTP verification page with user data
+        navigate('/verify-otp', { 
+          state: { 
+            userData: formData,
+            message: 'OTP sent to your email!'
+          } 
+        });
       }
     } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
+      setError(err.message || 'Failed to send OTP. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -116,7 +123,7 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                placeholder="your.email@example.com"
+                placeholder="yourname@vitbhopal.ac.in"
                 required
               />
             </div>
@@ -158,7 +165,7 @@ const Register = () => {
               disabled={loading}
               className="w-full py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-semibold transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Registering...' : 'Register'}
+              {loading ? 'Sending OTP...' : 'Continue with OTP'}
             </button>
           </form>
 
