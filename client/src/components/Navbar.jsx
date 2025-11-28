@@ -19,7 +19,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-white">
-              <span className="text-emerald-500">E</span>
+              <span className="text-primary-light">E</span>
               <span className="text-accent">-Cell</span>
             </div>
           </Link>
@@ -39,6 +39,18 @@ const Navbar = () => {
                   className="text-white hover:text-accent transition-colors duration-200 font-medium"
                 >
                   Dashboard
+                </Link>
+                <Link
+                  to="/organizer"
+                  className="text-white hover:text-accent transition-colors duration-200 font-medium"
+                >
+                  Organizer
+                </Link>
+                <Link
+                  to="/verify"
+                  className="text-white hover:text-accent transition-colors duration-200 font-medium"
+                >
+                  Verify QR
                 </Link>
                 <button
                   onClick={handleLogout}
@@ -106,6 +118,20 @@ const Navbar = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Dashboard
+                </Link>
+                <Link
+                  to="/organizer"
+                  className="block text-white hover:text-accent transition-colors duration-200 font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Organizer
+                </Link>
+                <Link
+                  to="/verify"
+                  className="block text-white hover:text-accent transition-colors duration-200 font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Verify QR
                 </Link>
                 <button
                   onClick={() => {

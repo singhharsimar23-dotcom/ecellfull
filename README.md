@@ -1,219 +1,71 @@
-# E-Cell Member Portal
+# E-Cell VIT Bhopal – Test Member Portal
 
-A complete, production-ready member portal for Entrepreneurship Cell with beautiful glassmorphism design, JWT authentication, and full-stack implementation.
+Live Demo: https://ecell-portal-sigma.vercel.app/  
+GitHub: https://github.com/singhharsimar23-dotcom/ecellfull
 
-🚀 Live Demo: Access the Portal Here: https://ecell-portal-sigma.vercel.app/
+A production-ready, full-stack member portal for Entrepreneurship Cell, VIT Bhopal .
 
-## 🚀 Features
+## Features
+- Stunning glassmorphism + dark gradient UI with Tailwind & shadcn/ui
+- Secure JWT authentication with httpOnly cookies
+- Personal member dashboard with profile & real-time upcoming events
+- Exclusive access: Only @vitbhopal.ac.in emails allowed
+- Fully responsive (mobile-first)
 
-- **Modern UI**: Glassmorphism design with deep violet/purple primary colors and teal accents
-- **Authentication**: Secure JWT-based authentication system
-- **User Dashboard**: Profile management and upcoming events display
-- **Responsive Design**: Mobile, tablet, and desktop optimized
-- **Full-Stack**: React frontend + Node.js/Express/MongoDB backend
+## Important Notes
+- Only VIT Bhopal students can register (`@vitbhopal.ac.in` domain strictly enforced)
+- Backend on Render free tier → cold starts possible (10–30 sec delay after inactivity). This is normal and will be upgraded with traffic.
 
-## 📁 Project Structure
 
-```
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/    # Reusable components
-│   │   ├── pages/         # Page components
-│   │   ├── services/      # API service layer
-│   │   ├── context/       # React context (Auth)
-│   │   └── router/        # Routing configuration
-│   └── package.json
-│
-└── server/                # Node.js backend
-    ├── models/           # MongoDB models
-    ├── routes/           # API routes
-    ├── controllers/      # Route controllers
-    ├── middleware/       # Auth middleware
-    └── server.js         # Entry point
-```
+## Tech Stack & Deployment
+| Layer     | Technology                              | Hosted On     |
+|----------|------------------------------------------|---------------|
+| Frontend | React 19 + Vite + Tailwind + shadcn/ui   | Vercel        |
+| Backend  | Node.js + Express + JWT + Mongoose       | Render        |
+| Database | MongoDB Atlas                            | MongoDB Cloud |
+| Auth     | JWT + httpOnly cookies                   | Cross-platform |
 
-## 🛠️ Technology Stack
+## AI Tools Used (Full Transparency — I Ship Fast)
+- Cursor – code generation, components, refactoring
+- Grok (xAI) – debugging, this README
 
-### Frontend
-- React 18 (Functional Components + Hooks)
-- React Router DOM
-- Tailwind CSS
-- Axios
 
-### Backend
-- Node.js
-- Express
-- MongoDB (Mongoose)
-- JWT (jsonwebtoken)
-- bcryptjs
+## What I Personally Did (Real Full-Stack Work)
+- Connected Vercel ↔ Render ↔ MongoDB Atlas end-to-end
+- Generated & debugged MongoDB URI (escaping, connection pooling, timeouts)
+- Fixed CORS, proxy, cold starts, JWT cookie issues across deployments
+- Restricted registration to only VIT Bhopal emails
+- Deployed, stress-tested, and iterated until zero bugs
 
-## 📦 Installation
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local or MongoDB Atlas)
+## Installation & Local Setup
+See detailed setup instructions in `/server/README.md` and `/client/README.md`
 
-### Backend Setup
+## Future Plans
+- OTP email verification (Resend + React Email)
+- Admin panel for event management
+- Custom domain: ecell.vitbhopal.ac.in
+- Migrate backend to Railway / AWS for zero cold starts
+- Push notifications & member analytics
 
-1. Navigate to server directory:
-```bash
-cd server
-```
+## Pages
+- `/` → Hero, mission, events preview
+- `/login` & `/register` → Secure auth
+- `/dashboard` → Protected member area
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create `.env` file (copy from `.env.example`):
-```bash
-cp .env.example .env
-```
-
-4. Update `.env` with your configuration:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/ecell-portal
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-NODE_ENV=development
-```
-
-5. Start the server:
-```bash
-# Development mode (with nodemon)
-npm run dev
-
-# Production mode
-npm start
-```
-
-Server will run on `http://localhost:5000`
-
-### Frontend Setup
-
-1. Navigate to client directory:
-```bash
-cd client
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create `.env` file (copy from `.env.example`):
-```bash
-cp .env.example .env
-```
-
-4. Update `.env` with your API URL:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-
-5. Start the development server:
-```bash
-npm run dev
-```
-
-Frontend will run on `http://localhost:3000`
-
-## 🚢 Deployment
-
-### Frontend (Vercel)
-
-1. Install Vercel CLI:
-```bash
-npm i -g vercel
-```
-
-2. Navigate to client directory:
-```bash
-cd client
-```
-
-3. Deploy:
-```bash
-vercel
-```
-
-4. Set environment variable in Vercel dashboard:
-   - `VITE_API_URL`: Your backend API URL
-
-### Backend (Render/Railway)
-
-#### Render
-
-1. Connect your GitHub repository
-2. Create a new Web Service
-3. Set build command: `npm install`
-4. Set start command: `npm start`
-5. Add environment variables:
-   - `PORT`: 5000
-   - `MONGODB_URI`: Your MongoDB connection string
-   - `JWT_SECRET`: Your secret key
-   - `NODE_ENV`: production
-
-#### Railway
-
-1. Connect your GitHub repository
-2. Create a new project
-3. Add MongoDB service (or use external MongoDB)
-4. Set environment variables in the service settings
-5. Deploy
-
-## 📝 API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-
-### User
-- `GET /api/user/profile` - Get user profile (Protected)
-
-### Events
-- `GET /api/events/upcoming` - Get upcoming events (max 6)
-
-## 🎨 Design Features
-
-- **Glassmorphism**: Modern frosted glass effect
-- **Color Scheme**: 
-  - Primary: Deep violet/purple (#6B21A8)
-  - Accent: Teal (#14B8A6)
-- **Typography**: Inter font family
-- **Responsive**: Mobile-first design
-
-## 🔐 Authentication Flow
-
-1. User registers/logs in
-2. Server returns JWT token
-3. Token stored in localStorage
-4. Token sent in Authorization header for protected routes
-5. Middleware validates token on backend
-
-## 📱 Pages
-
-- **Home** (`/`): Hero section, mission, values, activities
-- **Login** (`/login`): User authentication
-- **Register** (`/register`): New user registration
-- **Dashboard** (`/dashboard`): Protected page with profile and events
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 🆘 Support
-
-For issues and questions, please open an issue on the repository.
-
----
+Built with passion:
+*“I don’t just use AI — I debug it, deploy it, and make it work in production.”*
 
 Built with ❤️ for E-Cell
+
+
+<img width="1918" height="967" alt="Screenshot 2025-11-25 213718" src="https://github.com/user-attachments/assets/e9151e46-a3ac-49b4-9493-47b92cfaafe4" />
+
+
+
+<img width="1919" height="953" alt="Screenshot 2025-11-25 213737" src="https://github.com/user-attachments/assets/8a534c87-fc7a-4b9a-96a1-2b5c69538d1d" />
+
+
+
+<img width="1915" height="946" alt="Screenshot 2025-11-25 213802" src="https://github.com/user-attachments/assets/7018fd06-3527-4f85-9ed1-67b69a570540" />
 

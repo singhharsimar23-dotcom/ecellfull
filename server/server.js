@@ -7,9 +7,9 @@ const app = express();
 
 // --- START: CRITICAL CORS UPDATE (Dynamic Vercel URLs Allowed) ---
 const allowedDomains = [
-    'http://localhost:5173', // Local development (Vite default)
-    'http://localhost:3000', // Local development (alternative port)
-    '.vercel.app',           // Allow all Vercel domains for preview/production
+    'http://localhost:5173',
+    'http://localhost:3000', // Local development
+    '.vercel.app',         // Allow all Vercel domains for preview/production
 ];
 
 app.use(cors({
@@ -49,7 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/events', require('./routes/eventRoutes'));
-app.use('/api/otp', require('./routes/otpRoutes'));
+app.use('/api/tickets', require('./routes/ticketRoutes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

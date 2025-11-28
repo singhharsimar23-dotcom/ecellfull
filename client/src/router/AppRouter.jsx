@@ -4,8 +4,9 @@ import { useAuth } from '../context/AuthContext';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import VerifyOTP from '../pages/VerifyOTP';
 import Dashboard from '../pages/Dashboard';
+import OrganizerDashboard from '../pages/OrganizerDashboard';
+import QRVerifier from '../pages/QRVerifier';
 import Navbar from '../components/Navbar';
 
 const PrivateRoute = ({ children }) => {
@@ -30,12 +31,27 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/verify-otp" element={<VerifyOTP />} />
         <Route
           path="/dashboard"
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/organizer"
+          element={
+            <PrivateRoute>
+              <OrganizerDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/verify"
+          element={
+            <PrivateRoute>
+              <QRVerifier />
             </PrivateRoute>
           }
         />

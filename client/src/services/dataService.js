@@ -121,32 +121,3 @@ export const fetchUpcomingEvents = async () => {
   }
 };
 
-// ============ OTP Services ============
-
-export const sendOTP = async (userData) => {
-  try {
-    const response = await api.post('/otp/send', userData);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || { message: 'Failed to send OTP' };
-  }
-};
-
-export const verifyOTP = async (email, otp) => {
-  try {
-    const response = await api.post('/otp/verify', { email, otp });
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || { message: 'OTP verification failed' };
-  }
-};
-
-export const resendOTP = async (userData) => {
-  try {
-    const response = await api.post('/otp/resend', userData);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || { message: 'Failed to resend OTP' };
-  }
-};
-

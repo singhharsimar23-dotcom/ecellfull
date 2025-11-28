@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { sendOTP } from '../services/dataService';
+import { registerUser } from '../services/dataService';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ const Register = () => {
     rollNumber: '',
   });
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');  // ← NEW: for VIT email error
   const [loading, setLoading] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
     setError('');
+    setEmailError(''); // clear email error on typing
   };
 
   const validateForm = () => {
@@ -34,15 +36,13 @@ const Register = () => {
       setError('All fields are required');
       return false;
     }
-    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      setError('Please enter a valid email address');
+
+    // ← NEW: Only allow @vitbhopal.ac.in emails
+    if (!formData.email.endsWith('@vitbhopal.ac.in')) {
+      setEmailError('Only @vitbhopal.ac.in emails are allowed');
       return false;
     }
-    // Validate @vitbhopal.ac.in email
-    if (!formData.email.toLowerCase().endsWith('@vitbhopal.ac.in')) {
-      setError('Only @vitbhopal.ac.in email addresses are allowed');
-      return false;
-    }
+
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters long');
       return false;
@@ -51,32 +51,31 @@ const Register = () => {
       setError('Name must be at least 2 characters long');
       return false;
     }
+
+    setEmailError('');
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+    setEmailError('');
     if (!validateForm()) {
       return;
     }
-
     setLoading(true);
     try {
-      // Send OTP instead of direct registration
-      const response = await sendOTP(formData);
+      const response = await registerUser(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.rollNumber
+      );
       if (response.success) {
-        // Navigate to OTP verification page with user data
-        navigate('/verify-otp', { 
-          state: { 
-            userData: formData,
-            message: 'OTP sent to your email!'
-          } 
-        });
+        navigate('/login', { state: { message: 'Registration successful! Please login.' } });
       }
     } catch (err) {
-      setError(err.message || 'Failed to send OTP. Please try again.');
+      setError(err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -126,6 +125,9 @@ const Register = () => {
                 placeholder="yourname@vitbhopal.ac.in"
                 required
               />
+              {emailError && (
+                <p className="text-red-400 text-sm mt-2 animate-pulse">{emailError}</p>
+              )}
             </div>
 
             <div>
@@ -165,7 +167,7 @@ const Register = () => {
               disabled={loading}
               className="w-full py-3 bg-accent hover:bg-accent-dark text-white rounded-lg font-semibold transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Sending OTP...' : 'Continue with OTP'}
+              {loading ? 'Registering...' : 'Register'}
             </button>
           </form>
 
@@ -182,4 +184,3 @@ const Register = () => {
 };
 
 export default Register;
-
