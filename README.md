@@ -3,6 +3,14 @@
 **Live Demo:** https://ecell-portal-sigma.vercel.app  
 **GitHub:** https://github.com/singhharsimar23-dotcom/ecellfull
 
+## Try It Live
+1. Visit → https://ecell-portal-sigma.vercel.app  
+2. Register with your `@vitbhopal.ac.in` email → get OTP → login  
+3. Access organizer tools → generate QR tickets  
+4. Use verification page → scan QR → ticket marked as used.
+5. if you are lazy just use my cred. email- harsimar.25bcy10230@vitbhopal.ac.in
+pass-123456 for test purposes.
+
 A complete, production-deployed solution for E-Cell VIT Bhopal — successfully delivering ** (Member Portal) and (End-to-End QR Ticketing & Verification System)**.
 
 ## Important Notes
@@ -50,11 +58,6 @@ All code personally reviewed, tested, and deployed.
 - Resolved all production issues (CORS, cold starts, JWT, email, QR validation)
 - Delivered a clean, live, and fully functional system
 
-## Try It Live
-1. Visit → https://ecell-portal-sigma.vercel.app  
-2. Register with your `@vitbhopal.ac.in` email → get OTP → login  
-3. Access organizer tools → generate QR tickets  
-4. Use verification page → scan QR → ticket marked as used
 
 ## Future Roadmap
 - Public event registration flow
