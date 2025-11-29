@@ -1,4 +1,4 @@
-⁸# E-Cell VIT Bhopal – Member Portal + QR Ticketing System  
+# E-Cell VIT Bhopal – Member Portal + QR Ticketing System  
 
 **Live Demo:** https://ecell-portal-sigma.vercel.app  
 **GitHub:** https://github.com/singhharsimar23-dotcom/ecellfull
@@ -10,6 +10,9 @@
 4. Use verification page → scan QR → ticket marked as used.
 5. if you are lazy just use my cred. email- harsimar.25bcy10230@vitbhopal.ac.in
 pass-123456 for test purposes.
+
+
+:Note-Backend on Render free tier first request may take 10–30 sec after inactivity (cold start).
 
 A complete, production-deployed solution for E-Cell VIT Bhopal — successfully delivering ** (Member Portal) and (End-to-End QR Ticketing & Verification System)**.
 
