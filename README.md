@@ -71,8 +71,7 @@ All code personally reviewed, tested, and deployed.
 
 *“I don’t just use AI — I debug it, deploy it, and make it work in production.”*
 
-Built with ❤️ for E-Cell by
-**HARSIMAR SINGH**
+Built with ❤️ for E-Cell 
 <img width="1919" height="967" alt="Screenshot 2025-11-28 203341" src="https://github.com/user-attachments/assets/12069608-a2ec-49a0-ad00-91d40afcaa05" />
 <img width="1913" height="978" alt="Screenshot 2025-11-28 203357" src="https://github.com/user-attachments/assets/ca0e8769-a6a1-4914-99e2-92c35e1c8bbe" />
 <img width="1909" height="917" alt="Screenshot 2025-11-28 203435" src="https://github.com/user-attachments/assets/fac23661-ad5c-4322-9d08-a0cd51225d4a" />
