@@ -19,7 +19,7 @@ A complete, production-deployed solution for E-Cell VIT Bhopal — successfully 
 ## Important Notes(Please Read)
 - Only `@vitbhopal.ac.in` emails can register
 - OTP emails delivered instantly via Resend (zero Gmail/SMTP issues)
-- Backend on Render free tier → first request may take 10–30 sec after inactivity (cold start). Normal & will be upgraded on official adoption.
+- Backend on Render free tier → first request may take 10–30 sec after inactivity (cold start).
 
 ## Core Features Delivered
 ### Member Portal
